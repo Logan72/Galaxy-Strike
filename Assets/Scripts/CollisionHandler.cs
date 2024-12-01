@@ -3,11 +3,12 @@ using UnityEngine;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] ParticleSystem explosionVFX;
+    [SerializeField] GameSceneManagement gameSceneManagement;
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"We hit {other.name}");
         Instantiate(explosionVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        gameSceneManagement.ReloadScene();
     }    
 }
